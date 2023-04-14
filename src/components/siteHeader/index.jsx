@@ -33,9 +33,12 @@ const SiteHeader = () => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Top Rated", path: "/movies/topRated" },
+    { label: "Popular", path: "/movies/popular" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Watchlist", path: "/movies/watchList" },
+    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Watchlist", path: "/movies/watchList" }
+
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -54,7 +57,7 @@ const SiteHeader = () => {
             MOVIEPEDIA
           </Typography>
           <Typography variant="h6" sx={styles.title}>
-          Your ultimate guide to movies, TV shows, and celebrities!
+          Your ultimate guide to Cinema!
           </Typography>
           {isMobile ? (
             <>
