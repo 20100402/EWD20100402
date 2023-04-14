@@ -9,9 +9,9 @@ import { MoviesContext } from "../../contexts/moviesContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles";
 import ratings from "./ratingCategories";
+
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-
 
 const ReviewForm = ({ movie }) => {
   const defaultValues = {
@@ -32,7 +32,6 @@ const ReviewForm = ({ movie }) => {
   const [open, setOpen] = useState(false);  //NEW
 
 
-
   const handleRatingChange = (event) => {
     setRating(event.target.value);
   };
@@ -45,11 +44,9 @@ const ReviewForm = ({ movie }) => {
   const onSubmit = (review) => {
     review.movieId = movie.id;
     review.rating = rating;
-    // console.log(review);
     context.addReview(movie, review);
-    setOpen(true); // NEW
+    setOpen(true);
   };
-
 
 
   return (
@@ -73,7 +70,6 @@ const ReviewForm = ({ movie }) => {
           </Typography>
         </Alert>
       </Snackbar>
-
       <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
         <Controller
           name="author"

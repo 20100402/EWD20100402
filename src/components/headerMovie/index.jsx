@@ -5,23 +5,27 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
-import FavouriteIcon from "@mui/icons-material/Favorite";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { red } from "@mui/material/colors";
 
 const styles = {
-    root: {  
+  root: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
     flexWrap: "wrap",
     padding: 1.5,
   },
+  avatar: {
+    backgroundColor: "rgb(255, 0, 0)",
+  },
 };
+
 
 const MovieHeader = (props) => {
   const movie = props.movie;
   const localFav = JSON.parse(localStorage.getItem("favourites"));
-  const isMovieFav = localFav.some((movie) => movie.id == movie.id);
-
+  const isMovieFav = localFav.some((movie) => movie.id === movie.id);
 
   return (
     <Paper component="div" sx={styles.root}>
@@ -32,17 +36,18 @@ const MovieHeader = (props) => {
       <Typography variant="h4" component="h3">
         {movie.title}{"   "}
         <a href={movie.homepage}>
-          <HomeIcon color="primary"  fontSize="='large"/>
+          <HomeIcon color="primary" fontSize="='large" />
         </a>
         <br />
         <span>{`${movie.tagline}`} </span>
       </Typography>
 
       {isMovieFav ? (
-          <IconButton aria-label="is fav" sx={styles.avatar}>
-            <FavouriteIcon color="red" fontSize="large" />
-          </IconButton>
+        <IconButton aria-label="is fav" sx={styles.avatar}>
+          <FavoriteIcon color="primary" fontSize="large" />
+        </IconButton>
       ) : null}
+
 
       <IconButton aria-label="go forward">
         <ArrowForwardIcon color="primary" fontSize="large" />

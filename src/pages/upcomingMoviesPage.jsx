@@ -1,73 +1,31 @@
-import React, { useContext } from "react";
-import PageTemplate from "../components/templateMovieListPage";
-import { useQuery } from "react-query";
+import React from "react";
+import PageTemplate from '../components/templateMovieListPage'
 import Spinner from "../components/spinner";
-import { getUpcomingMovies } from "../api/tmdb-api";
-import useFiltering from "../hooks/useFiltering";
-import MovieFilterUI, {
-  titleFilter,
-  genreFilter,
-} from "../components/movieFilterUI";
+import { getUpComingMovies } from "../api/tmdb-api";
+import { useQuery } from "react-query";
+import AddToMustWatch from '../components/cardIcons/addToMustWatch'
 
-const titleFiltering = {
-  name: "title",
-  value: "",
-  condition: titleFilter,
-};
-const genreFiltering = {
-  name: "genre",
-  value: "0",
-  condition: genreFilter,
-};
+const UpcomingPage = (props) => {
+    const { data, error, isLoading, isError } = useQuery("upcoming", getUpComingMovies);
 
-const UpcomingMoviesPage = (props) => {
-  const { pageUpcomingMovies, setPageUpcomingMovies } =
-    useContext(MoviesContext);
-  const { isLoading, isError, error, data, isFetching } = useQuery(
-    ["upcoming", pageUpcomingMovies],
-    () => getUpcomingMovies(pageUpcomingMovies)
-  );
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
-    [],
-    [titleFiltering, genreFiltering]
-  );
+    if (isLoading) {
+        return <Spinner />;
+    }
 
-  if (isLoading || isFetching) {
-    return <Spinner />;
-  }
+    if (isError) {
+        return <h1>{error.message}</h1>;
+    }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+    const movies = data ? data.results : [];
 
-  const changeFilterValues = (type, value) => {
-    const newf = { name: type, value: value };
-    const newFilters =
-      type === "title" ? [newf, filterValues[1]] : [filterValues[0], newf];
-    setFilterValues(newFilters);
-  };
-
-  const movies = data ? data.results : [];
-  const displayedMovies = filterFunction(movies);
-
-  return (
-    <>
-      <PageTemplate
+    return (
+        <PageTemplate
         title="Upcoming Movies"
-        movies={displayedMovies}
+        movies={movies}
         action={(movie) => {
-          return <AddToFavouritesIcon movie={movie} page="upcoming" />;
+          return <AddToMustWatch movie={movie} />
         }}
-        page={pageUpcomingMovies}
-        pageSetter={setPageUpcomingMovies}
       />
-      <MovieFilterUI
-        filterInputChange={changeFilterValues}
-        titleFilter={filterValues[0].value}
-        genreFilter={filterValues[1].value}
-      />
-    </>
-  );
+    )
 };
-
-export default UpcomingMoviesPage;
+export default UpcomingPage

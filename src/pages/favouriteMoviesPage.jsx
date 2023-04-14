@@ -9,7 +9,6 @@ import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 
-
 const titleFiltering = {
   name: "title",
   value: "",
@@ -55,7 +54,6 @@ const FavouriteMoviesPage = () => {
     ? filterFunction(allFavourites)
     : [];
 
-  
 
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
@@ -80,6 +78,7 @@ const FavouriteMoviesPage = () => {
           );
         }}
       />
+
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
