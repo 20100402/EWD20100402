@@ -18,6 +18,7 @@ const styles = {
   },
   appbar: {
     // background: 'none',
+    backgroundColor: '#3f4e60'
   },
   // offset: theme.mixins.toolbar,
 };
