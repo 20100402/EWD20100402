@@ -33,9 +33,9 @@ const SiteHeader = () => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favourites" },
+    { label: "Favourites", path: "/movies/favourites" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Demo 4", path: "/" },
+    { label: "Watchlist", path: "/movies/watchList" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -51,10 +51,10 @@ const SiteHeader = () => {
       <AppBar sx={styles.appbar} position="fixed" elevation={0} color="primary">
         <Toolbar>
           <Typography variant="h4" sx={styles.title}>
-            Movie Hub
+            MOVIEPEDIA
           </Typography>
           <Typography variant="h6" sx={styles.title}>
-            All you ever wanted to know about Movies!
+          Your ultimate guide to movies, TV shows, and celebrities!
           </Typography>
           {isMobile ? (
             <>
