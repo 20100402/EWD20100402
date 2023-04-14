@@ -5,6 +5,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 const Demo = props => {
   const { modules, course } = props;
   
+
   const list = modules.map((module, index) => {
     return (
       <tr key={index}>
@@ -21,7 +22,7 @@ const Demo = props => {
         <thead>
           <tr>
             <th>Name</th>
-            <th>No lectures</th>
+            <th>No of lectures</th>
             <th>No practicals</th>
           </tr>
         </thead>
