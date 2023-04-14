@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import PageTemplate from '../components/templateMovieListPage'
 import Spinner from "../components/spinner";
 import { getPopularMovies } from "../api/tmdb-api";
@@ -6,7 +6,8 @@ import { useQuery } from "react-query";
 import AddToMustWatch from '../components/cardIcons/addToMustWatch'
 
 const PopularPage = (props) => {
-    const { data, error, isLoading, isError } = useQuery("popular", getPopularMovies);
+    const [currentPage, setCurrentPage] = useState(1);
+    const { data, error, isLoading, isError } = useQuery(["popular", { id: currentPage }], getPopularMovies);
 
     if (isLoading) {
         return <Spinner />;
@@ -17,8 +18,12 @@ const PopularPage = (props) => {
     }
 
     const movies = data ? data.results : [];
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+      };
 
     return (
+        <>
         <PageTemplate
         title="Popular Movies"
         movies={movies}
@@ -26,6 +31,16 @@ const PopularPage = (props) => {
           return <AddToMustWatch movie={movie} />
         }}
       />
+      <div align ="center">
+      
+      <div>
+        {Array.from({ length: 10 }, (_, i) => i + 1).map((page) => (
+          <button key={page} onClick={() => handlePageChange(page)}>
+            {page}
+          </button>
+        ))}
+      </div>
+    </div></>
     )
 };
 export default PopularPage
