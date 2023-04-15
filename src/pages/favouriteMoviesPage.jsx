@@ -16,6 +16,7 @@ const titleFiltering = {
   condition: titleFilter,
 };
 export const genreFiltering = {
+  
   name: "genre",
   value: "0",
   condition: function (movie, value) {
