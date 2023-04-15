@@ -6,8 +6,9 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
-import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
+import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+
 
 const titleFiltering = {
   name: "title",
