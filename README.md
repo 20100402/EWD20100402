@@ -68,12 +68,15 @@ Storybook.
 
 <img width="1470" alt="Screenshot 2023-04-15 at 12 34 03 AM" src="https://user-images.githubusercontent.com/113951387/232170625-2f12cc2e-856f-465d-ae5e-4eec6568d9cb.png">
 
-e.g.
+Routing:-
 
-/movies/favourites
-/movies/topRated
-/movies/popular
-/movies/watchList
-/movies/{id}
-/movies/upcoming
-/reviews/{id}
+/movies/favourites <br>
+/movies/topRated <br>
+/movies/popular <br>
+/movies/watchList <br>
+/movies/{id} <br>
+/movies/upcoming <br>
+/reviews/{id} <br>
+
+
+Deployment:-
