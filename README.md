@@ -70,10 +70,10 @@ Storybook.
 
 e.g.
 
-/movies/favourites
-/movies/topRated
-/movies/popular
-/movies/watchList
-/movies/{id}
-/movies/upcoming
-/reviews/{id}
+/movies/favourites <br>
+/movies/topRated <br>
+/movies/popular <br>
+/movies/watchList <br>
+/movies/{id} <br>
+/movies/upcoming <br>
+/reviews/{id} <br>
