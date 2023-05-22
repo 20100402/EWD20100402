@@ -18,7 +18,7 @@ const styles = {
   },
   appbar: {
     // background: 'none',
-    backgroundColor: '#3f4e60'
+    backgroundColor: "#3f4e60",
   },
   // offset: theme.mixins.toolbar,
 };
@@ -38,8 +38,10 @@ const SiteHeader = () => {
     { label: "Popular", path: "/movies/popular" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favourites", path: "/movies/favourites" },
-    { label: "Watchlist", path: "/movies/watchList" }
-
+    { label: "Watchlist", path: "/movies/watchList" },
+    { label: "Login", path: "/login" },
+    { label: "Register", path: "/signup" },
+    { label: "Logout", path: "/logout" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -58,7 +60,7 @@ const SiteHeader = () => {
             MOVIEPEDIA
           </Typography>
           <Typography variant="h6" sx={styles.title}>
-          Your ultimate guide to Cinema!
+            Your ultimate guide to Cinema!
           </Typography>
           {isMobile ? (
             <>

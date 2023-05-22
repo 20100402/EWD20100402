@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
+import { addToFavorites, getIdWithToken } from "../api/tmdb-api";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [myReviews, setMyReviews] = useState( {} );
+  const [myReviews, setMyReviews] = useState({});
   const [favourites, setFavourites] = useState([]);
   const [watchList, setWatchList] = useState([]);
 
@@ -13,13 +13,23 @@ const MoviesContextProvider = (props) => {
       updatedWatchList.push(movie.id);
     }
     setWatchList(updatedWatchList);
-  }
-  const addToFavourites = (movie) => {
+  };
+  const addToFavourites = async (movie) => {
     let updatedFavourites = [...favourites];
     if (!favourites.includes(movie.id)) {
       updatedFavourites.push(movie.id);
+      callFunctions(movie.id);
     }
     setFavourites(updatedFavourites);
+  };
+
+  const callFunctions = async (movieId) => {
+    try {
+      const id = await getIdWithToken();
+      const res = await addToFavorites(movieId, id);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const removeFromFavourites = (movie) => {
@@ -30,11 +40,12 @@ const MoviesContextProvider = (props) => {
     setWatchList(watchList.filter((mId) => mId !== movie.id));
   };
 
-  const addReview = (movie, review) => {   // NEW
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = (movie, review) => {
+    // NEW
+    setMyReviews({ ...myReviews, [movie.id]: review });
   };
 
- return (
+  return (
     <MoviesContext.Provider
       value={{
         favourites,
@@ -43,7 +54,7 @@ const MoviesContextProvider = (props) => {
         addToWatchList,
         removeFromFavourites,
         removeFromWatchList,
-        addReview,    
+        addReview,
       }}
     >
       {props.children}

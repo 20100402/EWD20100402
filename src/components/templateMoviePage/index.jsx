@@ -26,6 +26,7 @@ const TemplateMoviePage = ({ movie, children }) => {
     getMovieImages
   );
 
+
   if (isLoading) {
     return <Spinner />;
   }
